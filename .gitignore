@@ -129,4 +129,4 @@ dmypy.json
 .pyre/
 
 #exclude config of credentials
-.configs/config.conf
+configs/config.conf
