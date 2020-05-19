@@ -18,14 +18,33 @@ class space_track():
         self.st_password = self.st_config['password']
     
     def dailyScore(self):
+        # method that pulls the box score of countries and their number of satellites
         with SpaceTrackApi(login=self.st_login,password=self.st_password) as stapi:
             country_score = stapi.boxscore()
             pprint(country_score, indent=2)
             with open('../datastore/country_score.json','w') as score_file:
-                score_file.write(json.dumps(country_score))
+                score_file.write(json.dumps(country_score)) 
     
     def tle_dump(self):
-        pass
+        # method that pulls the most recent tle data for current satellites 
+        with SpaceTrackApi(login=self.st_login,password=self.st_password) as stapi:
+            tle_data = stapi.tle_latest()
+            with open('../datastore/tle_data.json', 'w') as tle_file:
+                tle_file.write(json.dumps(tle_data))
+    
+    def sat_cat(self):
+        # method that will dump current sattelite catalog information
+        with SpaceTrackApi(login=self.st_login,password=self.st_password) as stapi:
+            satcat_data = stapi.satcat(CURRENT='Y')
+            with open('../datastore/satcat_data.json', 'w') as satcat_file:
+                satcat_file.write(json.dumps(satcat_data))
 
+    def launch_sites(self):
+        # method to dump list of satellite launch locations 
+        with SpaceTrackApi(login=self.st_login,password=self.st_password) as stapi:
+            launch_sites = stapi.launch_site()
+            with open('../datastore/launch_site_data.json','w') as launch_site_file:
+                launch_site_file.write(json.dumps(launch_sites))
+    
 if __name__ == '__main__':
     main()
