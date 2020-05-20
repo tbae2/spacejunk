@@ -25,10 +25,14 @@ class space_track():
             with open('../datastore/country_score.json','w') as score_file:
                 score_file.write(json.dumps(country_score)) 
     
-    def tle_dump(self):
+    def tle_dump(self,norad_id_end=0,norad_id_start=0):
         # method that pulls the most recent tle data for current satellites 
+        start_id = norad_id_start
+        end_id = norad_id_end
+        norad_cat_id_range = f"{start_id}--{end_id}"
+
         with SpaceTrackApi(login=self.st_login,password=self.st_password) as stapi:
-            tle_data = stapi.tle_latest()
+            tle_data = stapi.tle_latest(NORAD_CAT_ID=norad_cat_id_range)
             with open('../datastore/tle_data.json', 'w') as tle_file:
                 tle_file.write(json.dumps(tle_data))
     
@@ -40,7 +44,7 @@ class space_track():
                 satcat_file.write(json.dumps(satcat_data))
 
     def launch_sites(self):
-        # method to dump list of satellite launch locations 
+        # method to dump list of satellite launch locations
         with SpaceTrackApi(login=self.st_login,password=self.st_password) as stapi:
             launch_sites = stapi.launch_site()
             with open('../datastore/launch_site_data.json','w') as launch_site_file:
