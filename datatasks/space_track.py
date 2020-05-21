@@ -2,7 +2,7 @@ from pprint import pprint
 from space_track_api import SpaceTrackApi
 import configparser
 import json
-
+import math
 
 
 def main():
@@ -45,8 +45,7 @@ class space_track():
         with SpaceTrackApi(login=self.st_login,password=self.st_password) as stapi:
             print(end_id)
             if end_id[0] > 20000:
-                end_id.insert(0, end_id[0]/2)
-
+                end_id.insert(0, math.floor(end_id[0]/2))
             
             tle_combined = []
             for endid in end_id:
