@@ -31,7 +31,7 @@ class space_track():
         start_id = norad_id_start
         end_id = [norad_id_end]
 
-
+        #determine start and end norard cat id's if only defaults provided (0,0)
         if start_id == 0 and end_id[0] == 0:
             with open("../datastore/satcat_data.json") as satcatfile:
                 sat_data = json.load(satcatfile)
@@ -46,8 +46,9 @@ class space_track():
             print(end_id)
             if end_id[0] > 20000:
                 end_id.insert(0, math.floor(end_id[0]/2))
-            
+            # combined output of 2 differnt spacetrack calls
             tle_combined = []
+            # parse and produce startid and list of end norad cat ids 
             for endid in end_id:
                 startid = start_id 
                 if end_id.index(endid) > 0:
