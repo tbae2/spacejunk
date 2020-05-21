@@ -130,3 +130,7 @@ dmypy.json
 
 #exclude config of credentials
 configs/config.conf
+configs/config.ini
+
+#exclude data dump from pushing to git
+datastore/*
