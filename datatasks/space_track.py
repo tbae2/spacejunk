@@ -27,14 +27,37 @@ class space_track():
     
     def tle_dump(self,norad_id_end=0,norad_id_start=0):
         # method that pulls the most recent tle data for current satellites 
+        # dependent on key args supplied or found within satcat_data 
         start_id = norad_id_start
-        end_id = norad_id_end
-        norad_cat_id_range = f"{start_id}--{end_id}"
+        end_id = [norad_id_end]
 
+
+        if start_id == 0 and end_id[0] == 0:
+            with open("../datastore/satcat_data.json") as satcatfile:
+                sat_data = json.load(satcatfile)
+                norad_ids = []
+                for sat in sat_data:
+                    norad_ids.append(sat["NORAD_CAT_ID"])
+                print(len(norad_ids))
+                end_id.clear()
+                end_id.append(len(norad_ids) + 1)
+        
         with SpaceTrackApi(login=self.st_login,password=self.st_password) as stapi:
-            tle_data = stapi.tle_latest(NORAD_CAT_ID=norad_cat_id_range)
+            print(end_id)
+            if end_id[0] > 20000:
+                end_id.insert(0, end_id[0]/2)
+
+            
+            tle_combined = []
+            for endid in end_id:
+                startid = start_id 
+                if end_id.index(endid) > 0:
+                    startid = end_id[end_id.index(endid) - 1]
+                norad_cat_id_range = f"{startid}--{endid}"
+                print(norad_cat_id_range)
+                tle_combined  += stapi.tle_latest(NORAD_CAT_ID=norad_cat_id_range)
             with open('../datastore/tle_data.json', 'w') as tle_file:
-                tle_file.write(json.dumps(tle_data))
+                tle_file.write(json.dumps(tle_combined))
     
     def sat_cat(self):
         # method that will dump current sattelite catalog information
