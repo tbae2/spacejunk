@@ -134,3 +134,6 @@ configs/config.ini
 
 #exclude data dump from pushing to git
 datastore/*
+datatasks/deltat.data
+datatasks/deltat.preds
+datatasks/Leap_Second.dat

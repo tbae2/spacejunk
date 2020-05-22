@@ -55,7 +55,7 @@ class space_track():
                     startid = end_id[end_id.index(endid) - 1]
                 norad_cat_id_range = f"{startid}--{endid}"
                 print(norad_cat_id_range)
-                tle_combined  += stapi.tle_latest(NORAD_CAT_ID=norad_cat_id_range)
+                tle_combined  += stapi.tle_latest(NORAD_CAT_ID=norad_cat_id_range,ORDINAL=1)
             with open('../datastore/tle_data.json', 'w') as tle_file:
                 tle_file.write(json.dumps(tle_combined))
     
