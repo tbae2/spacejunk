@@ -14,10 +14,11 @@ import os
 import configparser
 import psycopg2.extensions
 
-config = configparser.ConfigParser()
+config = configparser.ConfigParser(interpolation=None)
 config.read('../configs/config.ini')
 config = config["django"]
 key = config["key"]
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
