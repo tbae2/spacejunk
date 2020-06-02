@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import configparser
+import psycopg2.extensions
 
 config = configparser.ConfigParser()
 config.read('../configs/config.ini')
@@ -81,8 +82,13 @@ WSGI_APPLICATION = 'spacejunk.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'USER': 'postgres',
+        'PASSWORD': 'spacedbstuff',
+        'HOST': 'localhost',
+        'PORT': '5432',
+        'CLIENT_ENCODING': 'UTF8',
+        'TIMEZONE': 'America/New_York'
     }
 }
 
