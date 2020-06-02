@@ -87,9 +87,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'spacedev',
-        'USER': 'postgres',
+        'USER': 'spaceadmin',
         'PASSWORD': 'spacedbstuff',
-        'HOST': 'localhost',
+        'HOST': '192.168.1.247',
         'PORT': '5432',
         'CLIENT_ENCODING': 'UTF8',
         'TIMEZONE': 'America/New_York'
