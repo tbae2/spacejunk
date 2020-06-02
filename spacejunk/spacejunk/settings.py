@@ -12,11 +12,13 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import configparser
+import psycopg2.extensions
 
-config = configparser.ConfigParser()
+config = configparser.ConfigParser(interpolation=None)
 config.read('../configs/config.ini')
 config = config["django"]
 key = config["key"]
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -37,6 +39,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'mapplot.apps.MapplotConfig',
+    'stats.apps.StatsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -81,8 +85,14 @@ WSGI_APPLICATION = 'spacejunk.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'spacedev',
+        'USER': 'spaceadmin',
+        'PASSWORD': 'spacedbstuff',
+        'HOST': '192.168.1.247',
+        'PORT': '5432',
+        'CLIENT_ENCODING': 'UTF8',
+        'TIMEZONE': 'America/New_York'
     }
 }
 

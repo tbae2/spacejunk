@@ -137,3 +137,5 @@ datastore/*
 datatasks/deltat.data
 datatasks/deltat.preds
 datatasks/Leap_Second.dat
+.vscode/
+*migrations/
