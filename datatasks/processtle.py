@@ -20,8 +20,8 @@ def processTle():
             # print('Latitude:', subpoint.latitude.degrees)
             # print('Longitude:', subpoint.longitude.degrees)
             # print(satellite)
-            temp_tle["Latitude"] = subpoint.latitude.degrees
-            temp_tle["Longitude"] = subpoint.longitude.degrees
+            temp_tle["Latitude"] = str(subpoint.latitude.degrees)
+            temp_tle["Longitude"] = str(subpoint.longitude.degrees)
             # print(temp_tle)
             calculated_lat_long_tle.append(temp_tle)
         with open("../datastore/proc_tle_load.json",'w') as proc_tle:

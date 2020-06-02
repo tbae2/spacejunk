@@ -19,3 +19,15 @@ from django.urls import path
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
+
+from django.urls import include
+
+urlpatterns += [
+    path('mapplot/', include('mapplot.urls'))
+]
+
+from django.views.generic import RedirectView
+
+urlpatterns += [
+    path('',RedirectView.as_view(url='mapplot/',permanent=True)),
+]

@@ -39,6 +39,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'mapplot.apps.MapplotConfig',
+    'stats.apps.StatsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -84,6 +86,7 @@ WSGI_APPLICATION = 'spacejunk.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'spacedev',
         'USER': 'postgres',
         'PASSWORD': 'spacedbstuff',
         'HOST': 'localhost',
