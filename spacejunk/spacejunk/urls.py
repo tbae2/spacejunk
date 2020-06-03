@@ -23,7 +23,8 @@ urlpatterns = [
 from django.urls import include
 
 urlpatterns += [
-    path('mapplot/', include('mapplot.urls'))
+    path('mapplot/', include('mapplot.urls')),
+    path('stats/', include('stats.urls'))
 ]
 
 from django.views.generic import RedirectView

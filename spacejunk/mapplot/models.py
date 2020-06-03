@@ -21,8 +21,6 @@ class tle_record(models.Model):
     latitude = models.CharField(max_length=10)
     longitude = models.CharField(max_length=10)
 
-
-
 class satellite(models.Model):
     intldes = models.CharField(max_length=10)
     object_name = models.CharField(max_length=20)
