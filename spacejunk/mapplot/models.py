@@ -22,11 +22,11 @@ class tle_record(models.Model):
     longitude = models.CharField(max_length=10)
 
 class satellite(models.Model):
-    intldes = models.CharField(max_length=10)
-    object_name = models.CharField(max_length=20)
-    object_id = models.CharField(max_length=11)
-    norad_cat_id = models.CharField(max_length=10)
-    country = models.CharField(max_length=30)
+    intldes = models.CharField(max_length=50)
+    object_name = models.CharField(max_length=50)
+    object_id = models.CharField(max_length=50)
+    norad_cat_id = models.CharField(max_length=50)
+    country = models.CharField(max_length=50)
     launch = models.DateField()
-    launch_year = models.CharField(max_length=5)
-    site = models.CharField(max_length=10)
+    launch_year = models.CharField(max_length=50)
+    site = models.CharField(max_length=50)

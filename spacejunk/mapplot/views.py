@@ -8,7 +8,7 @@ from .models import tle_record,satellite
 
 def index(request):
     """ main page to show the map and available options"""
-    
+    return HttpResponse("stubbed response place holder")
         
 
 
@@ -59,7 +59,8 @@ def importSatellites(request):
 
     with open(file_path,'r') as sat_data:
         obj_result = []
-        for sat in sat_data:
+        data = js.load(sat_data)
+        for sat in data:
             sat_stat = {
                 "satname": sat["SATNAME"],
                 "norad_cat_id": sat["NORAD_CAT_ID"],
