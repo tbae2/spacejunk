@@ -10,7 +10,7 @@ lazy-object-proxy==1.4.3
 Logbook==1.5.3
 mccabe==0.6.1
 numpy==1.18.4
-psycopg2==2.8.5
+testresources
 psycopg2-binary==2.8.5
 pylint==2.5.2
 pytz==2020.1
@@ -20,7 +20,7 @@ requests==2.23.0
 sgp4==2.12
 six==1.15.0
 skyfield==1.21
-spacetrack==0.13.6
+space-track-api
 sqlparse==0.3.1
 toml==0.10.1
 urllib3==1.25.9
