@@ -9,7 +9,7 @@ class LaunchSite(models.Model):
     
 
 class CountryScore(models.Model):
-    launch_country = models.CharField(max_length=50,default=None)
+    launch_country = models.CharField(max_length=100,default=None)
     spadoc_cd = models.CharField(max_length=5,default=None)
     orbital_tba = models.IntegerField(default=None)
     orbital_payload_count = models.IntegerField(default=None)

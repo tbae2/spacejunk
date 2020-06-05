@@ -41,16 +41,16 @@ def importCountryScore(request):
                 "record": None,
                 "created": False
             }
-        obj,created = CountryScore.objects.get_or_create(
-            launch_country = country["COUNTRY"],
-            spadoc_cd = country["SPADOC_CD"],
-            orbital_tba = country["ORBITAL_TBA"],
-            orbital_payload_count = country["ORBITAL_PAYLOAD_COUNT"],
-            orbital_total_count = country["ORBITAL_TOTAL_COUNT"],
-            decayed_total_count = country["DECAYED_TOTAL_COUNT"],
-            country_total = country["COUNTRY_TOTAL"],
-        )
-        country_stat["record"] = obj
-        country_stat["created"] = created
+            obj,created = CountryScore.objects.get_or_create(
+                launch_country = country["COUNTRY"],
+                spadoc_cd = country["SPADOC_CD"],
+                orbital_tba = country["ORBITAL_TBA"],
+                orbital_payload_count = country["ORBITAL_PAYLOAD_COUNT"],
+                orbital_total_count = country["ORBITAL_TOTAL_COUNT"],
+                decayed_total_count = country["DECAYED_TOTAL_COUNT"],
+                country_total = country["COUNTRY_TOTAL"],
+            )
+            country_stat["record"] = obj
+            country_stat["created"] = created
         obj_result.append(country_stat)
     return HttpResponse(obj_result)
