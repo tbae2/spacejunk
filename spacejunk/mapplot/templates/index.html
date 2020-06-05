@@ -16,6 +16,7 @@
     </head>
 <body>
   <div id="app">
+    <v-span>[[ header ]]</v-span>
     <v-app>
       <v-content>
         <v-container>Hello world</v-container>
@@ -28,8 +29,12 @@
   <script>
     new Vue({
       el: '#app',
+      data: {
+          header: 'Space Junk Map Plot'
+      },
+      delimiters: ['[[', ']]'],
       vuetify: new Vuetify(),
-    })
+    });
   </script>
 </body>
 </html>
