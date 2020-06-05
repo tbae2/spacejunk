@@ -20,7 +20,7 @@ requests==2.23.0
 sgp4==2.12
 six==1.15.0
 skyfield==1.21
-spacetrack==0.13.6
+space-track-api
 sqlparse==0.3.1
 toml==0.10.1
 urllib3==1.25.9
