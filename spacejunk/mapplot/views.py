@@ -1,15 +1,25 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.conf import settings
+from django.views import View
+
 import os
 import json as js
 import datetime
 from .models import tle_record,satellite
 # Create your views here.
 
-def index(request):
-    """ main page to show the map and available options"""
-    return HttpResponse("stubbed response place holder")
+# def index(request):
+# "
+#     return HttpResponse("stubbed response place holder")
+
+class MapPlotView(View):
+    
+    def get(self, request):
+        """ main page to show the map and available options"""
+        context = {}
+
+        return render(request,'index.html',context)
         
 
 
