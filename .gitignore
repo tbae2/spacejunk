@@ -139,3 +139,4 @@ datatasks/deltat.preds
 datatasks/Leap_Second.dat
 .vscode/
 *migrations/
+*node_modules/
