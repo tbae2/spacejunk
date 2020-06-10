@@ -1,11 +1,20 @@
 from django.shortcuts import render
 from django.conf import settings
+from django.views import View
 import os
 from .models import LaunchSite,CountryScore
 import json as js
 from django.http import HttpResponse
 
 # Create your views here.
+
+class StatsView(View):
+
+    def get(self,request):
+        """ main stats view """
+        context = {}
+
+        return render(request,'stats.html',context)
 
 def importLaunchSite(request):
     ## function that can be called via url to import the launch_site data into the database ##
